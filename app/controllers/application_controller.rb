@@ -9,22 +9,49 @@ class ApplicationController < Sinatra::Base
     enable :sessions
     set :session_secret, "secret"
   end
+  helpers do
+
+    # def new_session?
+
+
+    # end
+
+
+  end
 
   get '/' do
-
+    
     erb :home
   end
 
-  post '/sessions', provides: [:json] do
+  post '/start' do 
+    session_token= Session.generate_session_id
+    # byebug
+    session[:id] ||= session_token
+    # byebug
+    @session = Session.find_or_create_by(session_token:session[:id]) 
+    # byebug
+    player1 = Player.find_or_create_by(name:params["player1"])
+    player2 = Player.find_or_create_by(name:params["player2"])
 
+    # byebug
+
+    erb :index
+
+  end
+
+
+
+  get '/sessions', provides: [:json] do
+    @sessions = Session.all.to_json
   end
 
   get '/sessions/:id/games', provides: [:json] do
-
+    @games = Games.where(session_id:params[:id]).to_json
   end
 
   get '/games/:id/results', provides: [:json] do
-
+    @results = Game.where(id:params[:id]).to_json
   end
 
   post '/sessions/:id/games', provides: [:json] do
