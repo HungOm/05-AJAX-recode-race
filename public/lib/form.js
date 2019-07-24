@@ -4,12 +4,12 @@
 playerOne = document.querySelector("player1").value;
 playerTwo = document.querySelector("player2").value;
 start = document.querySelector("#start");
-start.addEventListener("click",function(e){
+// start.addEventListener("click",function(e){
 // e.preventDefault();
 
 
 // if (validate;
-alert("it's working");}
+// alert("it's working");}
 // postData(`POST /sessions`, {answer: 42})
 //   .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
 //   .catch(error => console.error(error));
@@ -33,26 +33,50 @@ alert("it's working");}
 //     .then(response => response.json()); // parses JSON response into native JavaScript objects 
 // }
 // }
-);
+// );
+start.addEventListener("click", function(e) {
+  e.preventDefault();
 
-const validate = ()=>{
+  const url =
+    `https://api.mapbox.com/geocoding/v5/mapbox.places/${
+      input.value
+    }.json?access_token=` + apiKey;
 
-  if (playerOne === playerTwo){
-    alert("Idiot, you cant race yourself");
-    return false;
+  fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" }
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      });
+    })
+
+    // handling error
+    .catch(error => {
+      console.log("There is an error!");
+      console.error(error);
+    });
+});
+
+// const validate = ()=>{
+
+//   if (playerOne === playerTwo){
+//     alert("Idiot, you cant race yourself");
+//     return false;
   
-  }
-  else if(playerOne == null||playerTwo==""){
-   alert ("player one cannot be empty!")
-   return false;
-  }
-  else if (playerTwo == null||playerTwo==""){
-    alert ("player two cannot be empty!")
-    return false;
-   }
-  else{
-    return true;
-  }
-}
+//   }
+//   else if(playerOne == null||playerTwo==""){
+//    alert ("player one cannot be empty!")
+//    return false;
+//   }
+//   else if (playerTwo == null||playerTwo==""){
+//     alert ("player two cannot be empty!")
+//     return false;
+//    }
+//   else{
+//     return true;
+//   }
+// }
 
 

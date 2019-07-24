@@ -14,6 +14,12 @@ class ApplicationController < Sinatra::Base
 
     erb :home
   end
+  
+  # temporary path
+  get '/results' do
+    erb :result
+  end
+  # ==============
 
   post '/sessions', provides: [:json] do
 
