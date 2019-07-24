@@ -12,6 +12,7 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
 
+    erb :home
   end
 
   post '/sessions', provides: [:json] do
@@ -33,6 +34,4 @@ class ApplicationController < Sinatra::Base
   patch '/games/:id/finish', provides: [:json] do
 
   end
-end
-
 end
