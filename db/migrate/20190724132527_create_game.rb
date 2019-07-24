@@ -1,4 +1,4 @@
-class Game < ActiveRecord::Migration[5.2]
+class CreateGame < ActiveRecord::Migration[5.2]
   def change
     create_table :games do |t|
       t.string :winner
@@ -8,6 +8,5 @@ class Game < ActiveRecord::Migration[5.2]
       t.integer :player_two
       t.timestamps
     end
-
   end
 end
