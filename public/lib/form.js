@@ -34,13 +34,21 @@ start = document.querySelector("#start");
 // }
 // }
 // );
-start.addEventListener("click", function(e) {
-  e.preventDefault();
 
-  const url =
-    `https://api.mapbox.com/geocoding/v5/mapbox.places/${
-      input.value
-    }.json?access_token=` + apiKey;
+// start.addEventListener("click",function(e){
+//   // e.preventDefault();
+//   alert("it's working");}
+//   );
+
+
+function validate(){
+
+  var playerOne = document.getElementsByName("player1")[0].value;
+
+  var playerTwo = document.getElementsByName("player2")[0].value;
+
+  var start = document.querySelector("#start");
+  var myUrl = '/start'
 
   fetch(url, {
     method: "POST",
@@ -65,18 +73,15 @@ start.addEventListener("click", function(e) {
 //     alert("Idiot, you cant race yourself");
 //     return false;
   
-//   }
-//   else if(playerOne == null||playerTwo==""){
-//    alert ("player one cannot be empty!")
-//    return false;
-//   }
-//   else if (playerTwo == null||playerTwo==""){
-//     alert ("player two cannot be empty!")
-//     return false;
-//    }
-//   else{
-//     return true;
-//   }
-// }
+  }
+  else if(playerOne == null||playerTwo==""){
+   alert ("player one cannot be empty!")
+   return false;
+  }
+  else if (playerTwo == null||playerTwo==""){
+    alert ("player two cannot be empty!")
+    return false;
+   }
+};
 
 
