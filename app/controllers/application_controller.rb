@@ -28,6 +28,9 @@ class ApplicationController < Sinatra::Base
   get '/results' do
     erb :result
   end
+  get '/game' do
+    erb :index
+  end
   # ==============
 
   post '/start' do 
