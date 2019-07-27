@@ -23,6 +23,15 @@ class ApplicationController < Sinatra::Base
     
     erb :home
   end
+  
+  # temporary path
+  get '/results' do
+    erb :result
+  end
+  get '/game' do
+    erb :index
+  end
+  # ==============
 
   post '/start' do 
     session_token= Session.generate_session_id
