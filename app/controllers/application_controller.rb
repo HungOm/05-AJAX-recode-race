@@ -28,13 +28,13 @@ class ApplicationController < Sinatra::Base
     session_token= Session.generate_session_id
     # byebug
     session[:id] ||= session_token
-    # byebug
     @session = Session.find_or_create_by(session_token:session[:id]) 
-    # byebug
-    player1 = Player.find_or_create_by(name:params["player1"])
-    player2 = Player.find_or_create_by(name:params["player2"])
+    @player1 = Player.find_or_create_by(name:params["player1"])
+    @player2 = Player.find_or_create_by(name:params["player2"])
+    @game = Game.find_or_create_by(session_id:session[:id],player_one:@player1.id,player_two:@player2,status:"started")
 
     # byebug
+
 
     erb :index
 

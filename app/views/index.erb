@@ -11,6 +11,54 @@
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
+
+<script>
+
+  // bootstrap modal timeout on windows load
+  setTimeout(function(){$('#myModal').modal('show');},500);
+
+
+  // access innherHTML for modal body
+  const text = document.querySelector(".modal-body");
+  // text.innerHTML =`<h1>$Let's GO!!</h1>`;
+
+  // test addEventListener
+  document.querySelectorAll('.btn')[1].addEventListener("keypress",alert("GOod"));
+  // var count = 4;
+  // function countDown(e) {
+  //   e.preventDefault();
+
+  //     if (count > 0) {
+  //       text.innerHTML=`<h1>${count}</h1>`
+  //         count--;
+  //         setTimeout(anim, 1500);
+  //     }
+  //     else {
+  //         text.innerHTML=`<h1>$Let's GO!!</h1>`;
+  //         close=>{$('#myModal').modal('hide');}
+  // }
+  // };
+</script>   
+
+<div class="modal fade" id="myModal">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" style="text-align:center;"><span style="font-size:60px;color:green;"><%=@player1.name%></span> vs <span style="font-size:60px;color:green;"><%=@player2.name%></span></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary mx-auto" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+      </div>
+</div>
     <h1 class="text-center">Recode Racer</h1>
     <a href="/sessions"><p>Sessions</p></a>
     <h3><%=session[:id]%>
@@ -101,5 +149,10 @@
     </table>   
     <hr>
     <script src="/lib/recode_racer.js"></script>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </body>
 </html>
